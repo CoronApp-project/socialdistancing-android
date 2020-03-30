@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Social Distancing</string>
+    <string name="title_trusted_sources">Trusted Sources</string>
+    <string name="title_aura">My Aura</string>
+</resources>
