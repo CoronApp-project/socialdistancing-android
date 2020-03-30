@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_aura">
+
+    <fragment
+        android:id="@+id/navigation_aura"
+        android:name="com.accenture.socialdistancing.ui.aura.AuraFragment"
+        android:label="@string/title_aura"
+        tools:layout="@layout/fragment_aura" />
+
+    <fragment
+        android:id="@+id/navigation_trusted_sources"
+        android:name="com.accenture.socialdistancing.ui.trustedsources.TrustedSourcesFragment"
+        android:label="@string/title_trusted_sources"
+        tools:layout="@layout/fragment_trusted_sources" />
+</navigation>
