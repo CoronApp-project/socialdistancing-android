@@ -5,15 +5,58 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/tutorialCloseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="46dp"
+        android:background="@null"
+        android:src="@drawable/ic_close" />
+
+    <LinearLayout
+        android:id="@+id/tutorialButtonsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="37dp">
+
+        <Button
+            android:id="@+id/skipTutorialButton"
+            android:layout_width="120dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="34dp"
+            android:layout_weight="1"
+            android:background="@drawable/skip_button"
+            android:text="@string/skip_tutorial_button"
+            android:textAllCaps="false"
+            android:textColor="#019ffb" />
+
+        <Button
+            android:id="@+id/getStartedButton"
+            android:layout_width="120dp"
+            android:layout_height="38dp"
+
+            android:layout_weight="1"
+            android:background="@drawable/get_started_button"
+            android:text="@string/next_tutorial_button"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/viewPagerIndicatorIconsLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tutorialButtonsLayout"
         android:layout_centerHorizontal="true"
-        android:padding="8dp"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/firstDotImageView"
@@ -39,56 +82,13 @@
             android:src="@drawable/disable_position_icon" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/tutorialButtonsLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/skipTutorialButton"
-            android:layout_width="120dp"
-            android:layout_height="38dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:text="@string/skip_tutorial_button"
-            />
-
-        <Button
-            android:id="@+id/getStartedButton"
-            android:layout_width="120dp"
-            android:layout_height="38dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:text="@string/next_tutorial_button" />
-
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/tutorialCloseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginTop="46dp"
-        android:background="@null"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_close" />
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/tutorialViewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tutorialCloseButton"
         android:layout_above="@+id/viewPagerIndicatorIconsLayout"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/tutorialCloseButton"
         android:layout_marginBottom="10dp" />
 
 </RelativeLayout>

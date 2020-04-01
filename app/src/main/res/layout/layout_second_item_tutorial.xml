@@ -8,10 +8,10 @@
         android:layout_width="165dp"
         android:layout_height="138dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginTop="25dp"
         android:contentDescription="@null"
-        android:src="@drawable/ic_scan"/>
+        android:src="@drawable/ic_scan" />
 
     <TextView
         android:id="@+id/scanYourSurroundingsTitle"
@@ -22,9 +22,9 @@
         android:layout_marginBottom="6dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
+        android:fontFamily="sans-serif"
         android:text="@string/second_item_tutorial_title"
         android:textAlignment="center"
-        android:fontFamily="sans-serif"
         android:textColor="#343434"
         android:textSize="41sp"
         android:textStyle="bold" />
@@ -36,9 +36,9 @@
         android:layout_below="@+id/scanYourSurroundingsTitle"
         android:layout_marginEnd="17dp"
         android:layout_marginStart="17dp"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="@string/second_item_tutorial_subtitle"
-        android:fontFamily="sans-serif"
         android:textColor="#343434"
         android:textSize="21sp" />
 
