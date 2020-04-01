@@ -1,0 +1,26 @@
+[
+  {
+    "title":"Johns Hopkins Coronavirus Resource Center",
+    "description":"Johns Hopkins experts in global public health, infectious disease, and emergency preparedness have been at the forefront of the international response to COVID-19.",
+    "link":"https://coronavirus.jhu.edu/map.html",
+    "photoLink": "https://elcorreoweb.es/binrepository/768x401/0c0/675d400/none/10703/UBLG/sin-titulo-1_20391309_20200321081540.jpg"
+  },
+  {
+    "title":"Coronavirus (CoV) GLOBAL world health organization",
+    "description":"WHO official site with updated information about COVID-19",
+    "link":"https://www.who.int/en/health-topics/coronavirus",
+    "photoLink": "https://yalibnan.com/wp-content/uploads/2020/02/WHO.jpg"
+  },
+  {
+    "title":"Spanish ministry of health",
+    "description":"Ministerio de sanidad, consumo y bienestar social",
+    "link":"https://www.mscbs.gob.es/campannas/campanas20/coronavirus.htm",
+    "photoLink": "https://estaticos.sport.es/resources/jpg/1/6/ministerio-sanidad-1583837792661.jpg"
+  },
+  {
+    "title":"Centers for Disease Control and Prevention",
+    "description":"As the nation's health protection agency, CDC saves lives and protects people from health, safety, and security threats.",
+    "link":"https://www.cdc.gov/",
+    "photoLink": "https://lymescience.org/wp-content/uploads/2018/12/cdc-logo-white-bg.png"
+  }
+]
