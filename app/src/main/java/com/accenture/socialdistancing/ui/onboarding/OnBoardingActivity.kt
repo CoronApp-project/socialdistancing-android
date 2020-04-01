@@ -2,7 +2,9 @@ package com.accenture.socialdistancing.ui.onboarding
 
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.accenture.socialdistancing.MainActivity
@@ -68,19 +70,22 @@ class OnBoardingActivity : AppCompatActivity() {
                 firstDotImageView.setImageResource(R.drawable.current_position_icon)
                 secondDotImageView.setImageResource(R.drawable.disable_position_icon)
                 thirdDotImageView.setImageResource(R.drawable.disable_position_icon)
-                getStartedButton.setText(R.string.next_tutorial_button)
+                getStartedButton.text = getString(R.string.next_tutorial_button)
+                skipTutorialButton.visibility = View.VISIBLE
             }
             1 -> {
                 firstDotImageView.setImageResource(R.drawable.disable_position_icon)
                 secondDotImageView.setImageResource(R.drawable.current_position_icon)
                 thirdDotImageView.setImageResource(R.drawable.disable_position_icon)
-                getStartedButton.setText(R.string.next_tutorial_button)
+                getStartedButton.text = getString(R.string.next_tutorial_button)
+                skipTutorialButton.visibility = View.VISIBLE
             }
             2 -> {
                 firstDotImageView.setImageResource(R.drawable.disable_position_icon)
                 secondDotImageView.setImageResource(R.drawable.disable_position_icon)
                 thirdDotImageView.setImageResource(R.drawable.current_position_icon)
-                getStartedButton.setText(R.string.start_tutorial_button)
+                getStartedButton.text = getString(R.string.next_tutorial_button)
+                skipTutorialButton.visibility = View.GONE
             }
         }
     }
