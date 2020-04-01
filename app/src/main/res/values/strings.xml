@@ -3,4 +3,13 @@
     <string name="app_name_extended">Social Distancing App</string>
     <string name="title_trusted_sources">Trusted Sources</string>
     <string name="title_aura">My Aura</string>
+    <string name="first_item_tutorial_title">Keep distance</string>
+    <string name="first_item_tutorial_subtitle">Coronavirus is thought to spread from person to person. A person can become infected through close contact and respiratory droplets that come out of our mouth or nose (i.e. when we cough, sneeze, split or talk). We are all responsible for preventing this!</string>
+    <string name="second_item_tutorial_title">Scan your surroundings</string>
+    <string name="second_item_tutorial_subtitle">Hold your phone in front of you while you move around. It will show you your \'spreading area\'. Within that area, the risk of getting infected or infecting others is higher</string>
+    <string name="third_item_tutorial_title">Don\'t let others inside</string>
+    <string name="third_item_tutorial_subtitle">When a person gets inside your \'spreading area\', you are too close. Your phone will notify you of that so you can move away.</string>
+    <string name="skip_tutorial_button">Skip tutorial</string>
+    <string name="next_tutorial_button">Next</string>
+    <string name="start_tutorial_button">Start</string>
 </resources>
