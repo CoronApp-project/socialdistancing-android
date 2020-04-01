@@ -7,6 +7,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.accenture.socialdistancing.MainActivity
 import com.accenture.socialdistancing.R
+import com.accenture.socialdistancing.ui.onboarding.OnBoardingActivity
 
 
 class SplashActivity : AppCompatActivity() {
@@ -22,13 +23,14 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             val isFirstTime = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE).getBoolean(FIRST_TIME_PREFERENCE, true)
             if(isFirstTime) {
-                //TODO: Go to tutorial
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, OnBoardingActivity::class.java)
                 startActivity(intent)
             } else {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
+
+            finish()
         }, 3000)
     }
 }
