@@ -1,8 +1,11 @@
 package com.accenture.socialdistancing.ui.onboarding
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.accenture.socialdistancing.MainActivity
 import com.accenture.socialdistancing.R
 import com.accenture.socialdistancing.ui.onboarding.tutorialitems.FirstItemTutorial
 import com.accenture.socialdistancing.ui.onboarding.tutorialitems.SecondItemTutorial
@@ -10,6 +13,11 @@ import com.accenture.socialdistancing.ui.onboarding.tutorialitems.ThirdItemTutor
 import kotlinx.android.synthetic.main.activity_on_boarding.*
 
 class OnBoardingActivity : AppCompatActivity() {
+
+    companion object {
+        private const val PREFERENCES_NAME = "preferences"
+        private const val FIRST_TIME_PREFERENCE = "first_time"
+    }
 
     private lateinit var onBoardingAdapter: OnBoardingAdapter
 
@@ -26,15 +34,26 @@ class OnBoardingActivity : AppCompatActivity() {
                 val currentPosition = tutorialViewPager.currentItem
                 tutorialViewPager.currentItem = currentPosition + 1
             } else {
-                Toast.makeText(this, "Go To App", Toast.LENGTH_LONG).show()
+                saveTutorialCheckedPreference()
+                goToMainScreen()
             }
         }
         skipTutorialButton.setOnClickListener {
-            Toast.makeText(this, "Skip Tutorial", Toast.LENGTH_LONG).show()
+            goToMainScreen()
         }
         tutorialCloseButton.setOnClickListener {
-            Toast.makeText(this, "Close Tutorial", Toast.LENGTH_LONG).show()
+            finish()
         }
+    }
+
+    private fun saveTutorialCheckedPreference() {
+        val sharedPreference =  getSharedPreferences(PREFERENCES_NAME,Context.MODE_PRIVATE)
+        sharedPreference.edit().putBoolean(FIRST_TIME_PREFERENCE, false).apply()
+    }
+
+    private fun goToMainScreen() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun addPagerFragments() {
@@ -65,5 +84,4 @@ class OnBoardingActivity : AppCompatActivity() {
             }
         }
     }
-
 }
