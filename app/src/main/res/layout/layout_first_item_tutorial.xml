@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/keepDistanceImageView"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_keep_distance" />
+
+    <TextView
+        android:id="@+id/keepDistanceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/keepDistanceImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/first_item_tutorial_title"
+        android:textAlignment="center"
+        android:textColor="#343434"
+        android:textSize="41sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/keepDistanceSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/keepDistanceTitle"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="@string/first_item_tutorial_subtitle"
+        android:textColor="#343434"
+        android:textSize="21sp" />
+
+</RelativeLayout>
