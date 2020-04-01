@@ -84,7 +84,7 @@ class OnBoardingActivity : AppCompatActivity() {
                 firstDotImageView.setImageResource(R.drawable.disable_position_icon)
                 secondDotImageView.setImageResource(R.drawable.disable_position_icon)
                 thirdDotImageView.setImageResource(R.drawable.current_position_icon)
-                getStartedButton.text = getString(R.string.next_tutorial_button)
+                getStartedButton.text = getString(R.string.start_tutorial_button)
                 skipTutorialButton.visibility = View.GONE
             }
         }

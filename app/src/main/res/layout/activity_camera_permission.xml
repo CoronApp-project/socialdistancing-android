@@ -38,15 +38,22 @@
             <Button
             android:id="@+id/btnPermissionNo"
             android:layout_marginEnd="20dp"
+            android:padding="5dp"
             android:textAllCaps="false"
             android:text="@string/permission_no"
+            android:textColor="@color/blue"
+            android:background="@drawable/skip_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/btnPermissionOk"
                 android:layout_marginStart="20dp"
+                android:padding="5dp"
+                android:textAllCaps="false"
                 android:text="@string/permission_ok"
+                android:textColor="@color/white"
+                android:background="@drawable/get_started_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
