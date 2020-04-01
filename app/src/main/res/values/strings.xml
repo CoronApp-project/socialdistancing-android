@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Social Distancing</string>
     <string name="app_name_extended">Social Distancing App</string>
+    <string name="camera_permission">For this app to work, we need to access your camera. That cool?</string>
+    <string name="camera_permission_2">Are you sure? You\'ll miss what this awesome app has to show you</string>
+    <string name="permission_ok">OK!</string>
+    <string name="permission_no">Nope</string>
+    <string name="permission_ok_2">OK, access camera</string>
+    <string name="permission_no_2">I am sure</string>
     <string name="title_trusted_sources">Trusted Sources</string>
     <string name="title_aura">My Aura</string>
     <string name="first_item_tutorial_title">Keep distance</string>
