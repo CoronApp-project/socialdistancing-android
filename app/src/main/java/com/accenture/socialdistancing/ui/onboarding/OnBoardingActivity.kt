@@ -63,6 +63,15 @@ class OnBoardingActivity : AppCompatActivity() {
         onBoardingAdapter.addFragments(ThirdItemTutorial())
     }
 
+    override fun onBackPressed() {
+        val currentPosition = tutorialViewPager.currentItem
+        if (tutorialViewPager.currentItem == 0) {
+            finish()
+        } else {
+            tutorialViewPager.currentItem = currentPosition - 1
+        }
+    }
+
     private fun onPageSelected(position: Int) {
         when (position) {
             0 -> {
