@@ -2,10 +2,8 @@ package com.accenture.socialdistancing.ui.onboarding
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.accenture.socialdistancing.MainActivity
 import com.accenture.socialdistancing.R
@@ -44,24 +42,34 @@ class OnBoardingActivity : AppCompatActivity() {
             goToMainScreen()
         }
         tutorialCloseButton.setOnClickListener {
-            finish()
+            goToMainScreen()
         }
     }
 
     private fun saveTutorialCheckedPreference() {
-        val sharedPreference =  getSharedPreferences(PREFERENCES_NAME,Context.MODE_PRIVATE)
+        val sharedPreference = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
         sharedPreference.edit().putBoolean(FIRST_TIME_PREFERENCE, false).apply()
     }
 
     private fun goToMainScreen() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun addPagerFragments() {
         onBoardingAdapter.addFragments(FirstItemTutorial())
         onBoardingAdapter.addFragments(SecondItemTutorial())
         onBoardingAdapter.addFragments(ThirdItemTutorial())
+    }
+
+    override fun onBackPressed() {
+        val currentPosition = tutorialViewPager.currentItem
+        if (tutorialViewPager.currentItem == 0) {
+            finish()
+        } else {
+            tutorialViewPager.currentItem = currentPosition - 1
+        }
     }
 
     private fun onPageSelected(position: Int) {

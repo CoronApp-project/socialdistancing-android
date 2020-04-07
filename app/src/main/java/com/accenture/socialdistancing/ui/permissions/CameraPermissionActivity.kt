@@ -44,6 +44,7 @@ class CameraPermissionActivity: AppCompatActivity() {
                     // permission was granted, yay!
                     val intent = Intent(this, OnBoardingActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     // permission denied, boo!
                     setVerifyingScreen()
