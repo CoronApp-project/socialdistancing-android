@@ -24,6 +24,9 @@ import android.content.Intent
 import android.os.CountDownTimer
 import android.os.Build
 import android.app.*
+import android.bluetooth.BluetoothDevice
+import android.content.BroadcastReceiver
+import android.content.IntentFilter
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -67,6 +70,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /* Create a BroadcastReceiver for ACTION_FOUND.
+    private val receiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            when(intent.action) {
+                BluetoothDevice.ACTION_FOUND -> {
+                    // Discovery has found a device. Get the BluetoothDevice
+                    // object and its info from the Intent.
+                    val device: BluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
+                    val deviceName = device.name
+                    val rssi = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE)
+                    val deviceHardwareAddress = device.address // MAC address
+
+                    Log.d("bluetoothTest", "FOUND: $deviceName with Address: $deviceHardwareAddress and RSSI: $rssi")
+                }
+            }
+        }
+    }
+     */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -91,11 +113,23 @@ class MainActivity : AppCompatActivity() {
                 checkLocationPermission()
             }
         }
+
+        // Register for broadcasts when a device is discovered.
+        //val filter = IntentFilter(BluetoothDevice.ACTION_FOUND)
+        //registerReceiver(receiver, filter)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //unregisterReceiver(receiver)
     }
 
     private fun checkLocationPermission() {
         when (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
-            PackageManager.PERMISSION_GRANTED -> bluetoothAdapter.bluetoothLeScanner.startScan(bleListener)
+            PackageManager.PERMISSION_GRANTED -> {
+                bluetoothAdapter.bluetoothLeScanner.startScan(bleListener)
+                //bluetoothAdapter.startDiscovery()
+            }
             else -> requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
         }
     }
@@ -104,15 +138,12 @@ class MainActivity : AppCompatActivity() {
         val isAppInForeground = ForegroundCheckTask().execute(this).get()
 
         if(isAppInForeground) {
-            Log.d("bleTest", "notifySocialApproach dialog")
             val alertDialog = AlertDialog.Builder(this@MainActivity)
             alertDialog.setIcon(R.mipmap.ic_launcher_round)
             alertDialog.setTitle(getString(R.string.app_name))
             alertDialog.setMessage(getString(R.string.social_approach_alert) + detectedDeviceName)
             alertDialog.show()
         } else {
-            Log.d("bleTest", "notifySocialApproach push")
-
             val notificationBuilder = NotificationCompat.Builder(applicationContext, NOTIFICATION_CHANNEL_ID)
             val ii = Intent(applicationContext, MainActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this, 0, ii, 0)
@@ -149,6 +180,7 @@ class MainActivity : AppCompatActivity() {
             LOCATION_PERMISSION_REQUEST_CODE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     bluetoothAdapter.bluetoothLeScanner.startScan(bleListener)
+                    //bluetoothAdapter.startDiscovery() needs to be launched every 12 seconds. See https://developer.android.com/guide/topics/connectivity/bluetooth#DiscoverDevices
                 } else Toast.makeText(this, getString(R.string.location_permission_denied), Toast.LENGTH_LONG).show()
                 return
             }
