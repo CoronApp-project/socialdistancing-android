@@ -3,7 +3,9 @@ package com.accenture.socialdistancing.ui.permissions
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.accenture.socialdistancing.R
@@ -37,6 +39,12 @@ class CameraPermissionActivity: AppCompatActivity() {
         btnPermissionOk.text = getString(R.string.permission_ok_2)
     }
 
+    private fun openSettings() {
+        startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            data = Uri.fromParts("package", packageName, null)
+        })
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             CAMERA_PERMISSION_REQUEST_CODE -> {
@@ -48,7 +56,12 @@ class CameraPermissionActivity: AppCompatActivity() {
                 } else {
                     // permission denied, boo!
                     setVerifyingScreen()
+                    if(!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                        // permission denied and also 'Not ask me again' checkbox, selected
+                        openSettings()
+                    }
                 }
+
                 return
             }
         }
