@@ -10,8 +10,8 @@
     <string name="social_approach_alert">Watch out!! You\'re pretty near of another person who can be infected. Please, keep the social distancing!/n Device detected: </string>
     <string name="unknown_device">Unknown Device</string>
     <string name="location_permission_denied">OK! You won\'t be able to receive location based alerts</string>
-    <string name="title_trusted_sources">Trusted Sources</string>
-    <string name="title_aura">My Aura</string>
+    <string name="title_news">News</string>
+    <string name="title_help">Help</string>
     <string name="first_item_tutorial_title">Keep distance</string>
     <string name="first_item_tutorial_subtitle">Coronavirus is thought to spread from person to person. A person can become infected through close contact and respiratory droplets that come out of our mouth or nose (i.e. when we cough, sneeze, split or talk). We are all responsible for preventing this!</string>
     <string name="second_item_tutorial_title">Scan your surroundings</string>

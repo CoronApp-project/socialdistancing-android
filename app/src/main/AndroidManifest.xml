@@ -2,15 +2,6 @@
 <manifest package="com.accenture.socialdistancing"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <permission android:name="android.permission.BLUETOOTH" android:label="BLUETOOTH" />
-    <permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,20 +9,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ArActivity"></activity>
         <activity
             android:name=".ui.splash.SplashActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash"
-            android:label="@string/app_name">
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.permissions.CameraPermissionActivity" android:theme="@style/AppTheme.Splash" android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.onboarding.OnBoardingActivity" android:theme="@style/AppTheme.Splash" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.permissions.CameraPermissionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Splash" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui.onboarding.OnBoardingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Splash" />
     </application>
+    <permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <permission
+        android:name="android.permission.BLUETOOTH"
+        android:label="BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
 </manifest>

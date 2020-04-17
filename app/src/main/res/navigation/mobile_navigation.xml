@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_aura">
+    app:startDestination="@+id/navigation_news">
 
     <fragment
-        android:id="@+id/navigation_aura"
-        android:name="com.accenture.socialdistancing.ui.aura.AuraFragment"
-        android:label="@string/title_aura"
-        tools:layout="@layout/fragment_aura" />
+        android:id="@+id/navigation_help"
+        android:name="com.accenture.socialdistancing.ui.help.HelpFragment"
+        android:label="@string/title_help"
+        tools:layout="@layout/fragment_help" />
 
     <fragment
-        android:id="@+id/navigation_trusted_sources"
-        android:name="com.accenture.socialdistancing.ui.trustedsources.TrustedSourcesFragment"
-        android:label="@string/title_trusted_sources"
-        tools:layout="@layout/fragment_trusted_sources" />
+        android:id="@+id/navigation_news"
+        android:name="com.accenture.socialdistancing.ui.news.NewsFragment"
+        android:label="@string/title_news"
+        tools:layout="@layout/fragment_news" />
 </navigation>

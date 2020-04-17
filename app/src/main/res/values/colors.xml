@@ -6,4 +6,5 @@
     <color name="blue">#019ffb</color>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
+    <color name="homeColorPrimary">#019ffb</color>
 </resources>

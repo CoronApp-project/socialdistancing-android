@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/homeColorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -12,6 +12,17 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:background">@color/white</item>
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="AppTheme.Home">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimary">@color/homeColorPrimary</item>
+    </style>
+    <style name="fabButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="maxImageSize">56.5dp</item>
+        <item name="background">@drawable/ic_ar_view</item>
+
     </style>
 
 </resources>

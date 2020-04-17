@@ -1,9 +1,8 @@
-package com.accenture.socialdistancing.ui.trustedsources
+package com.accenture.socialdistancing.ui.news
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView

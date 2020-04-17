@@ -1,4 +1,4 @@
-package com.accenture.socialdistancing.ui.trustedsources
+package com.accenture.socialdistancing.ui.news
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.accenture.socialdistancing.model.TrustedSource
 import com.google.gson.Gson
 import java.util.*
 
-class TrustedSourcesFragment : Fragment() {
+class NewsFragment : Fragment() {
     companion object {
         private const val GLOBAL_LOCALE = "WO"
     }
@@ -22,7 +22,7 @@ class TrustedSourcesFragment : Fragment() {
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_trusted_sources, container, false)
+        val root = inflater.inflate(R.layout.fragment_news, container, false)
         val localeBasedResults = getListWithLocaleBasedResults(getParsedFeed())
 
         viewManager = LinearLayoutManager(activity)

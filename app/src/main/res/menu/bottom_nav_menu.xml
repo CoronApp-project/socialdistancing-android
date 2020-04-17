@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_trusted_sources"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_trusted_sources" />
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/tab_news"
+        android:title="@string/title_news" />
 
     <item
-        android:id="@+id/navigation_aura"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_aura" />
+        android:id="@+id/navigation_help"
+        android:icon="@drawable/tab_help"
+        android:title="@string/title_help" />
 
 </menu>

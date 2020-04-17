@@ -9,7 +9,7 @@ import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.accenture.socialdistancing.MainActivity
+import com.accenture.socialdistancing.HomeActivity
 import com.accenture.socialdistancing.R
 import com.accenture.socialdistancing.ui.onboarding.OnBoardingActivity
 import com.accenture.socialdistancing.ui.permissions.CameraPermissionActivity
@@ -48,7 +48,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, OnBoardingActivity::class.java)
             startActivity(intent)
         } else {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }

@@ -1,17 +1,21 @@
 package com.accenture.socialdistancing
 
 import android.Manifest
+import android.animation.ObjectAnimator
+import android.app.*
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
@@ -20,15 +24,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.accenture.socialdistancing.utils.ForegroundCheckTask
-import android.content.Intent
-import android.os.CountDownTimer
-import android.os.Build
-import android.app.*
-import android.bluetooth.BluetoothDevice
-import android.content.BroadcastReceiver
-import android.content.IntentFilter
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+
+class HomeActivity : AppCompatActivity() {
     companion object {
         private const val RSSI_MINIMUM_ACCEPTABLE_VALUE = -70
         private const val LOCATION_PERMISSION_REQUEST_CODE = 2
@@ -60,10 +60,10 @@ class MainActivity : AppCompatActivity() {
                  */
 
                 Log.d("bleTest", "rssi: $rssi")
-                if(shouldNotify) {
+                if (shouldNotify) {
                     countDown.start()
-                    if(detectedDevice?.name != null && detectedDevice.name != "null") notifySocialApproach(detectedDevice.name)
-                    else if(detectedDevice?.address != null) notifySocialApproach(detectedDevice.address)
+                    if (detectedDevice?.name != null && detectedDevice.name != "null") notifySocialApproach(detectedDevice.name)
+                    else if (detectedDevice?.address != null) notifySocialApproach(detectedDevice.address)
                     else notifySocialApproach(getString(R.string.unknown_device))
                 }
             }
@@ -92,22 +92,32 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar!!.hide()
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
 
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_aura, R.id.navigation_trusted_sources
+                R.id.navigation_help, R.id.navigation_news
             )
         )
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        if(packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+        val animator: ObjectAnimator = ObjectAnimator.ofFloat(extendedFabContainer, "cardElevation", 8f, 0f)
+        extendedFabContainer.setOnClickListener {
+            animator.start()
+        }
+
+        if (packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
             val bluetoothManager = applicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
             bluetoothAdapter = bluetoothManager.adapter
 
-            if(!bluetoothAdapter.isEnabled) {
+            if (!bluetoothAdapter.isEnabled) {
                 startActivityForResult(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), BLUETOOTH_ENABLE_REQUEST_CODE)
             } else {
                 checkLocationPermission()
@@ -137,15 +147,15 @@ class MainActivity : AppCompatActivity() {
     private fun notifySocialApproach(detectedDeviceName: String) {
         val isAppInForeground = ForegroundCheckTask().execute(this).get()
 
-        if(isAppInForeground) {
-            val alertDialog = AlertDialog.Builder(this@MainActivity)
+        if (isAppInForeground) {
+            val alertDialog = AlertDialog.Builder(this@HomeActivity)
             alertDialog.setIcon(R.mipmap.ic_launcher_round)
             alertDialog.setTitle(getString(R.string.app_name))
             alertDialog.setMessage(getString(R.string.social_approach_alert) + detectedDeviceName)
             alertDialog.show()
         } else {
             val notificationBuilder = NotificationCompat.Builder(applicationContext, NOTIFICATION_CHANNEL_ID)
-            val ii = Intent(applicationContext, MainActivity::class.java)
+            val ii = Intent(applicationContext, HomeActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this, 0, ii, 0)
 
             val bigText = NotificationCompat.BigTextStyle()
@@ -164,7 +174,8 @@ class MainActivity : AppCompatActivity() {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channelId = NOTIFICATION_CHANNEL_ID
-                val channel = NotificationChannel(channelId, getString(R.string.channel_id_notification_description),
+                val channel = NotificationChannel(
+                    channelId, getString(R.string.channel_id_notification_description),
                     NotificationManager.IMPORTANCE_HIGH
                 )
                 notificationManager.createNotificationChannel(channel)
@@ -189,9 +200,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when(requestCode) {
+        when (requestCode) {
             BLUETOOTH_ENABLE_REQUEST_CODE -> {
-                if(resultCode == Activity.RESULT_OK) checkLocationPermission()
+                if (resultCode == Activity.RESULT_OK) checkLocationPermission()
                 else Toast.makeText(this, getString(R.string.location_permission_denied), Toast.LENGTH_LONG).show()
             }
         }

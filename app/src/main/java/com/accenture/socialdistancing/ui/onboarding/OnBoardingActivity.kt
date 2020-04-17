@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.accenture.socialdistancing.MainActivity
+import com.accenture.socialdistancing.HomeActivity
 import com.accenture.socialdistancing.R
 import com.accenture.socialdistancing.ui.onboarding.tutorialitems.FirstItemTutorial
 import com.accenture.socialdistancing.ui.onboarding.tutorialitems.SecondItemTutorial
@@ -52,7 +52,7 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun goToMainScreen() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }
